@@ -1,0 +1,93 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff5630;
+  letter-spacing: 1px;
+}
+
+.logo .dot {
+  color: #ff5630;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: relative;
+  color: #222;
+}
+
+.nav-links .active,
+.nav-links li:hover {
+  color: #4f8cff;
+  border-bottom: 2px solid #4f8cff;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.icon {
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Shared nav button styles */
+.nav-btn {
+  border: none;
+  outline: none;
+  border-radius: 2rem;
+  padding: 0.5rem 1.7rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  box-shadow: 0 2px 8px rgba(255,86,48,0.07);
+  letter-spacing: 0.5px;
+}
+
+/* Beautiful orange sign-in button */
+.signin-btn {
+  background: #ff5630;
+  color: #fff;
+  border: 1.5px solid #ff5630;
+}
+
+.signin-btn:hover, .signin-btn:focus {
+  background: #fff;
+  color: #ff5630;
+  border: 1.5px solid #ff5630;
+  box-shadow: 0 4px 16px rgba(255,86,48,0.13);
+}
+
+.account-dropdown {
+  animation: fadeIn 0.18s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.account-dropdown div:hover {
+  background: #f7f7f7;
+}

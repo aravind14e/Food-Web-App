@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+
+:root {
+  --color-bg: #f5f6fa;
+  --color-text: #222;
+  --color-primary: #4f8cff;
+  --color-card: #fff;
+  --color-border: #e0e0e0;
+}
+
+[data-theme="dark"] {
+  --color-bg: #181a1b;
+  --color-text: #f5f6fa;
+  --color-primary: #4f8cff;
+  --color-card: #23272f;
+  --color-border: #333;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: #f8fafc;
+  color: #222;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #ff5630;
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+.logo .dot {
+  color: #ff5630;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  font-size: 1.13rem;
+  cursor: pointer;
+  position: relative;
+  color: #222;
+  transition: color 0.18s;
+}
+
+.nav-links .active,
+.nav-links li:hover {
+  color: #ff5630;
+}
+
+.nav-links .active::after,
+.nav-links li:hover::after {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  height: 2.5px;
+  background: #ff5630;
+  border-radius: 2px;
+  margin-top: 2px;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.icon {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.nav-btn {
+  border: none;
+  outline: none;
+  border-radius: 2rem;
+  padding: 0.5rem 1.7rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  box-shadow: 0 2px 8px rgba(255,86,48,0.07);
+  letter-spacing: 0.5px;
+}
+
+.signin-btn {
+  background: #ff5630;
+  color: #fff;
+  border: 1.5px solid #ff5630;
+}
+
+.signin-btn:hover, .signin-btn:focus {
+  background: #fff;
+  color: #ff5630;
+  border: 1.5px solid #ff5630;
+  box-shadow: 0 4px 16px rgba(255,86,48,0.13);
+}
+
+.signup-btn {
+  background: #fff;
+  color: #ff5630;
+  border: 1.5px solid #ff5630;
+}
+
+.signup-btn:hover, .signup-btn:focus {
+  background: #ff5630;
+  color: #fff;
+  border: 1.5px solid #ff5630;
+  box-shadow: 0 4px 16px rgba(255,86,48,0.13);
+}
+
+.hero {
+  position: relative;
+  margin: 2rem;
+  border-radius: 24px;
+  overflow: hidden;
+  min-height: 420px;
+  box-shadow: 0 8px 32px rgba(255,86,48,0.08);
+  display: flex;
+  align-items: center;
+}
+
+.hero-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  filter: brightness(0.85) saturate(1.15);
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, rgba(30,30,30,0.55) 40%, rgba(30,30,30,0.15) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: absolute;
+  left: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  max-width: 600px;
+  z-index: 2;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+.hero-content h1 {
+  font-size: 3.2rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+  letter-spacing: 0.5px;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.view-menu-btn {
+  background: #fff;
+  color: #ff5630;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.7rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(255,86,48,0.07);
+}
+
+.view-menu-btn:hover {
+  background: #ff5630;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+nav {
+  background: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: var(--color-primary);
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: 500;
+}
+
+.theme-toggle {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 1rem;
+  transition: background 0.2s;
+}
+
+form {
+  background: var(--color-card);
+  max-width: 350px;
+  margin: 3rem auto;
+  padding: 2rem 2rem 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--color-primary);
+}
+
+input, select {
+  padding: 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  transition: border 0.2s;
+}
+
+input:focus, select:focus {
+  border-color: var(--color-primary);
+}
+
+button[type="submit"] {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+  background: #2563eb;
+}
+
+form div {
+  min-height: 1.5em;
+  text-align: center;
+  color: #e53e3e;
+  font-size: 0.95em;
+}

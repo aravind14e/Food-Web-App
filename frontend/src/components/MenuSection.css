@@ -1,0 +1,131 @@
+.menu-section {
+  margin: 3rem 2rem 2rem 2rem;
+  padding: 2rem 0;
+}
+
+.menu-section h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.menu-section p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.menu-categories {
+  display: flex;
+  gap: 2.2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.menu-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.15rem;
+  color: #444;
+}
+
+.menu-category img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: transform 0.18s;
+}
+
+.menu-category img:hover {
+  transform: scale(1.08);
+}
+
+hr {
+  margin: 2.5rem 0 1.5rem 0;
+  border: none;
+  border-top: 1.5px solid #eee;
+}
+
+.menu-section h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+.menu-dishes {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.menu-dish {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 1rem;
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+
+.menu-dish:hover {
+  box-shadow: 0 6px 24px rgba(255,86,48,0.13);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.menu-dish img {
+  width: 170px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0.7rem;
+}
+
+.dish-title {
+  font-weight: 600;
+  font-size: 1.08rem;
+  margin-bottom: 0.3rem;
+}
+
+.dish-rating {
+  color: #ff5630;
+  font-size: 1.1rem;
+}
+
+.add-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.18s, transform 0.12s;
+  box-shadow: 0 2px 8px rgba(255,86,48,0.13);
+  outline: none;
+}
+
+.add-btn svg {
+  display: block;
+  transition: filter 0.18s;
+}
+
+.add-btn:hover, .add-btn:focus {
+  box-shadow: 0 4px 16px rgba(255,86,48,0.18);
+  transform: scale(1.08);
+}
+
+.add-btn:active svg circle {
+  filter: brightness(0.9);
+}
