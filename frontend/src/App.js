@@ -8,9 +8,8 @@ import ContactUs from './components/ContactUs';
 import CartModal from './components/CartModal';
 import AuthModal from './components/AuthModal';
 import MyOrders from './components/MyOrders';
+import PaymentPage from './components/PaymentPage';
 import './App.css';
-
-
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -18,7 +17,7 @@ function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [showAuth, setShowAuth] = useState(false);
-  const [isSignIn, setIsSignIn] = useState(true); // true = Login, false = Signup
+  const [isSignIn, setIsSignIn] = useState(true);
   const [form, setForm] = useState({ name: '', email: '', password: '' });
 
   useEffect(() => {
@@ -50,6 +49,11 @@ function App() {
     setCart(prev => prev.map(i => i.name === item.name ? { ...i, qty } : i));
   };
 
+  const clearCart = () => {
+    setCart([]);
+    setCartOpen(false);
+  };
+
   const handleSignup = (userData) => {
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
@@ -63,6 +67,7 @@ function App() {
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
   };
 
   const handleSignupSubmit = (e) => {
@@ -71,57 +76,58 @@ function App() {
   };
 
   return (
-      <BrowserRouter>
-        <Navbar
-          user={user}
-          onLogout={handleLogout}
-          cartCount={cart.reduce((a, b) => a + b.qty, 0)}
-          onCartClick={() => setCartOpen(true)}
-          onAuthClick={() => setShowAuth(true)}
-        />
-        <section id="home-section">
-          <Hero />
-        </section>
-        <section id="menu-section">
-          <MenuSection addToCart={addToCart} />
-        </section>
-        <section id="app-section">
-          <AppDetails />
-        </section>
-        <section id="contact-section">
-          <ContactUs />
-        </section>
-        <CartModal
-          open={cartOpen}
-          cart={cart}
-          onClose={() => setCartOpen(false)}
-          removeFromCart={removeFromCart}
-          changeQty={changeQty}
-        >
-          <button
-            className="modal-login-btn"
-            style={{ width: '100%', marginTop: '1rem' }}
-            onClick={() => {
-              alert('Payment successful! (Demo)');
-              onClose();
-              // Optionally clear cart here
-            }}
-          >
-            Pay
-          </button>
-        </CartModal>
-        <AuthModal
-          open={showAuth}
-          isSignIn={isSignIn}
-          onClose={() => setShowAuth(false)}
-          onSwitch={setIsSignIn}
-          onSignup={handleSignup}
-          onLogin={handleLogin}
-        />
-        <Routes>
-          <Route path="/orders" element={<MyOrders />} />
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Navbar
+        user={user}
+        onLogout={handleLogout}
+        cartCount={cart.reduce((a, b) => a + b.qty, 0)}
+        onCartClick={() => setCartOpen(true)}
+        onAuthClick={() => setShowAuth(true)}
+      />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <section id="home-section">
+              <Hero />
+            </section>
+            <section id="menu-section">
+              <MenuSection addToCart={addToCart} />
+            </section>
+            <section id="app-section">
+              <AppDetails />
+            </section>
+            <section id="contact-section">
+              <ContactUs />
+            </section>
+          </>
+        } />
+        <Route path="/orders" element={<MyOrders />} />
+        <Route path="/payment" element={
+          <PaymentPage 
+            total={cart.reduce((sum, item) => sum + item.price * item.qty, 0)}
+            deliveryFee={10}
+            cart={cart}
+            onClose={clearCart}
+            onOrderPlaced={clearCart}
+          />
+        } />
+      </Routes>
+      <CartModal
+        open={cartOpen}
+        cart={cart}
+        onClose={() => setCartOpen(false)}
+        removeFromCart={removeFromCart}
+        changeQty={changeQty}
+      />
+      <AuthModal
+        open={showAuth}
+        isSignIn={isSignIn}
+        onClose={() => setShowAuth(false)}
+        onSwitch={setIsSignIn}
+        onSignup={handleSignup}
+        onLogin={handleLogin}
+      />
+    </BrowserRouter>
   );
 }
 
