@@ -1,0 +1,267 @@
+.payment-page {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 2rem;
+}
+
+.payment-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 3rem;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.payment-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* Remove the vertical divider since sections are now stacked */
+.payment-sections-container::after {
+  display: none;
+}
+
+.payment-section {
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.payment-section h3 {
+  font-size: 32px;
+  color: #1a1a1a;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid #ff6a42;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.75rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #f8f9fa;
+  transition: all 0.2s ease;
+  height: 45px;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  height: auto;
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #ff6a42;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 106, 66, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #999;
+  font-size: 15px;
+}
+
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.payment-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  margin: 0;
+  width: 100%;
+}
+
+.payment-option:hover {
+  border-color: #ff6a42;
+  background-color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.payment-option input[type="radio"] {
+  width: 24px;
+  height: 24px;
+  margin-top: 4px;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: #ff6a42;
+}
+
+.payment-option-content {
+  flex: 1;
+}
+
+.payment-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.payment-text h4 {
+  margin: 0;
+  font-size: 20px;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.payment-text p {
+  margin: 0;
+  font-size: 15px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.order-summary {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  color: #666;
+  font-size: 14px;
+}
+
+.summary-row.total {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  font-weight: 600;
+  color: #2d2d2d;
+}
+
+.price {
+  font-weight: 500;
+  color: #2d2d2d;
+}
+
+.place-order-btn {
+  width: 100%;
+  background: #ff6a42;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.place-order-btn:hover {
+  background: #e65a32;
+}
+
+.additional-payment-details {
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  margin-left: 3rem;
+}
+
+.additional-payment-details .form-group {
+  margin-bottom: 1rem;
+}
+
+.additional-payment-details .form-group:last-child {
+  margin-bottom: 0;
+}
+
+.additional-payment-details input {
+  background: #ffffff;
+}
+
+.additional-payment-details .form-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+}
+
+/* Adjust spacing for payment options when they have additional details */
+.payment-option + .additional-payment-details {
+  margin-top: -0.5rem;
+}
+
+@media (max-width: 768px) {
+  .payment-page {
+    padding: 1rem;
+  }
+
+  .payment-container {
+    padding: 1rem;
+  }
+
+  .payment-sections-container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .payment-sections-container::after {
+    display: none;
+  }
+
+  .payment-section {
+    padding: 0;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+} 
