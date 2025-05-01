@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export default function CartModal({ open, cart, onClose, removeFromCart, changeQty }) {
   if (!open) return null;
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  const deliveryFee = 10; // Add fixed delivery fee
 
   return (
     <div className="modal-backdrop">
@@ -34,27 +35,28 @@ export default function CartModal({ open, cart, onClose, removeFromCart, changeQ
                 </li>
               ))}
             </ul>
-            <div style={{ fontWeight: 700, fontSize: '1.1rem', margin: '1rem 0' }}>
-              Total: ₹{total}
-            </div>
+            <CartTotal
+              subtotal={total}
+              deliveryFee={deliveryFee}
+              onClose={onClose}
+            />
           </>
         )}
-        <CartTotal
-          subtotal={total}
-          deliveryFee={0}
-          onCheckout={() => alert('Proceeding to checkout!')}
-          onApplyPromo={code => alert('Promo code applied: ' + code)}
-        />
       </div>
     </div>
   );
 }
 
-export function CartTotal({ subtotal = 0, deliveryFee = 0, onCheckout, onApplyPromo }) {
+export function CartTotal({ subtotal = 0, deliveryFee = 0, onClose }) {
   const [promo, setPromo] = useState('');
   const navigate = useNavigate();
 
   const total = subtotal + deliveryFee;
+
+  const handleProceedToPayment = () => {
+    onClose();
+    navigate('/payment');
+  };
 
   return (
     <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
@@ -88,9 +90,9 @@ export function CartTotal({ subtotal = 0, deliveryFee = 0, onCheckout, onApplyPr
             marginTop: 10,
             cursor: 'pointer'
           }}
-          onClick={() => navigate('/orders')}
+          onClick={handleProceedToPayment}
         >
-          PROCEED TO CHECKOUT
+          PROCEED TO PAYMENT
         </button>
       </div>
       {/* Promo Code Section */}
@@ -102,7 +104,7 @@ export function CartTotal({ subtotal = 0, deliveryFee = 0, onCheckout, onApplyPr
           style={{ display: 'flex', gap: 0 }}
           onSubmit={e => {
             e.preventDefault();
-            onApplyPromo && onApplyPromo(promo);
+            alert('Promo code applied: ' + promo);
           }}
         >
           <input
