@@ -1,26 +1,41 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthModal from './AuthModal';
 import './Navbar.css'; // or your main CSS file
-
-function scrollToSection(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-}
 
 export default function Navbar({ user, onLogout, cartCount, onCartClick, onAuthClick }) {
   const [showAuth, setShowAuth] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const navigate = useNavigate();
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <>
       <nav className="navbar">
-        <div className="logo">QuickBite<span className="dot">.</span></div>
+        <div className="logo">
+          <Link to="/" onClick={() => scrollToSection('home-section')}>
+            QuickBite<span className="dot">.</span>
+          </Link>
+        </div>
         <ul className="nav-links">
-          <li style={{ cursor: 'pointer' }} onClick={() => scrollToSection('home-section')}>Home</li>
-          <li style={{ cursor: 'pointer' }} onClick={() => scrollToSection('menu-section')}>Menu</li>
-          <li style={{ cursor: 'pointer' }} onClick={() => scrollToSection('app-section')}>App</li>
-          <li style={{ cursor: 'pointer' }} onClick={() => scrollToSection('contact-section')}>Contact us</li>
+          <li>
+            <Link to="/" onClick={() => scrollToSection('home-section')}>Home</Link>
+          </li>
+          <li>
+            <Link to="/" onClick={() => scrollToSection('menu-section')}>Menu</Link>
+          </li>
+          <li>
+            <Link to="/" onClick={() => scrollToSection('app-section')}>App</Link>
+          </li>
+          <li>
+            <Link to="/" onClick={() => scrollToSection('contact-section')}>Contact us</Link>
+          </li>
         </ul>
         <div className="nav-icons">
           {/* Search Icon */}
@@ -84,13 +99,20 @@ export default function Navbar({ user, onLogout, cartCount, onCartClick, onAuthC
                   </div>
                   <div
                     style={{ padding: '0.8rem 1rem', cursor: 'pointer' }}
-                    onClick={() => { setShowMenu(false); /* show orders modal/section here */ }}
+                    onClick={() => { 
+                      setShowMenu(false);
+                      navigate('/orders');
+                    }}
                   >
                     My Orders
                   </div>
                   <div
                     style={{ padding: '0.8rem 1rem', cursor: 'pointer', color: '#ff5630', fontWeight: 600 }}
-                    onClick={() => { setShowMenu(false); onLogout(); }}
+                    onClick={() => { 
+                      setShowMenu(false); 
+                      onLogout(); 
+                      navigate('/');
+                    }}
                   >
                     Logout
                   </div>
